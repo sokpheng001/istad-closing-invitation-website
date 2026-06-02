@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="km">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Closing Ceremony of ISTAD</title>
     <link href="./istad_logo.png" rel="shortcut icon" />
+
+    <!-- Khmer Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary-bg: #222;
@@ -20,7 +26,7 @@
 
         body {
             background-color: var(--primary-bg);
-            font-family: sans-serif;
+            font-family: "Noto Sans Khmer", sans-serif;
             min-height: 100vh;
         }
 
@@ -38,6 +44,13 @@
             color: white;
             margin-bottom: 2rem;
             padding-top: 2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 500;
         }
 
         .title span:last-child {
@@ -72,13 +85,29 @@
             border-radius: 5px;
         }
 
-        #agenda .card-header { background: linear-gradient(to right, #0fcf7b, #0c9f30); }
-        #map .card-header { background: linear-gradient(to right, #f7256e, #cc0c48); }
-        #istad .card-header { background: linear-gradient(to right, #f7ea1f, #f87d2c); }
+        #agenda .card-header {
+            background: linear-gradient(to right, #0fcf7b, #0c9f30);
+        }
 
-        #agenda .card-icon { background-image: url(./list.gif); }
-        #map .card-icon { background-image: url(./destination.gif); }
-        #istad .card-icon { background-image: url(./browser.gif); }
+        #map .card-header {
+            background: linear-gradient(to right, #f7256e, #cc0c48);
+        }
+
+        #istad .card-header {
+            background: linear-gradient(to right, #f7ea1f, #f87d2c);
+        }
+
+        #agenda .card-icon {
+            background-image: url(./list.gif);
+        }
+
+        #map .card-icon {
+            background-image: url(./destination.gif);
+        }
+
+        #istad .card-icon {
+            background-image: url(./browser.gif);
+        }
 
         .card-button {
             width: 100%;
@@ -90,6 +119,7 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: background-color var(--animation-duration) ease;
+            font-family: inherit;
         }
 
         .card-button:hover {
@@ -138,6 +168,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
+            font-family: inherit;
         }
 
         .save-image-btn:hover {
@@ -164,29 +195,32 @@
                 grid-template-columns: 1fr;
                 padding: 1rem;
             }
-            
+
             .modal {
                 width: 95%;
                 height: 95vh;
                 padding: 1rem;
             }
+
+            .title {
+                font-size: 1.2rem;
+                line-height: 1.7;
+            }
         }
     </style>
 </head>
 <body>
+
     <h1 class="title">
         <span>របៀបវារៈក្នុង</span>
         <br>
-        <!-- <span>របៀបវារៈ</span>
-        <span>ក្នុងកម្មវិធីបិទវគ្គ</span>
-        <span>Fullstack Web Development Cource</span>
-        <span>ជំនាន់ទី១</span> -->
         <span>
-            ពិធី​ប្រគល់​រង្វាន់នៃ​ការ​ប្រកួតប្រជែង​គម្រោង​​ឌីជីថល និង​បញ្ចប់​ការ​សិក្សានៃថ្នាក់ IT Professional ជំនាន់ទី១
+            ពិធី​ប្រគល់​រង្វាន់នៃ​ការ​ប្រកួតប្រជែង​គម្រោង​ឌីជីថល និង​បញ្ចប់​ការ​សិក្សានៃ​ថ្នាក់ IT Professional ជំនាន់ទី១
         </span>
     </h1>
 
     <main class="card-container">
+
         <div id="agenda" class="card">
             <div class="card-header">
                 <div class="card-icon"></div>
@@ -210,6 +244,7 @@
             </div>
             <button class="card-button">ISTAD</button>
         </div>
+
     </main>
 
     <div class="modal hidden">
@@ -217,6 +252,7 @@
         <img src="./ISTAD - ITE/agenda-itp-gen-1.jpg" alt="agenda" id="agenda-image">
         <button class="save-image-btn">Save Image</button>
     </div>
+
     <div class="overlay hidden"></div>
 
     <script>
@@ -254,9 +290,11 @@
         function downloadImage() {
             const image = document.getElementById('agenda-image');
             const imageUrl = image.src;
+
             const link = document.createElement('a');
             link.href = imageUrl;
             link.download = 'agenda-itp-gen-1.jpg';
+
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -264,5 +302,6 @@
 
         saveImageBtn.addEventListener('click', downloadImage);
     </script>
+
 </body>
 </html>
